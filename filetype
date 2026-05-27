@@ -1,0 +1,21 @@
+#!/bin/bash
+echo -n "Enter file or directory name: "
+read name
+
+if [ ! -e "$name" ]; then
+    echo "$name does not exist."
+elif [ -h "$name" ]; then
+    echo "$name is a Symbolic Link."
+elif [ -d "$name" ]; then
+    echo "$name is a Directory."
+elif [ -c "$name" ]; then
+    echo "$name is a Character Device."
+elif [ -b "$name" ]; then
+    echo "$name is a Block Device."
+elif [ -p "$name" ]; then
+    echo "$name is a Named Pipe (FIFO)."
+elif [ -S "$name" ]; then
+    echo "$name is a Socket."
+elif [ -f "$name" ]; then
+    echo "$name is a Regular File."
+fi
